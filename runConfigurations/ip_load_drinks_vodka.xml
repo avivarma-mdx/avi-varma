@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="login admin" type="PythonConfigurationType" factoryName="Python">
+  <configuration default="false" name="ip load drinks.vodka" type="PythonConfigurationType" factoryName="Python">
     <module name="tau" />
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
@@ -9,12 +9,11 @@
       <env name="MDX_CONFIG_DIR" value="$PROJECT_DIR$/src/methodics/test/config" />
       <env name="MDX_PI_DEBUG" value="1" />
       <env name="MDX_PI_SERVER" value="http://localhost:8080" />
-      <env name="MDX_PICACHE_SERVER" value="localhost:12900" />
       <env name="MDX_ROOT_DIR" value="$PROJECT_DIR$" />
       <env name="MDX_WORKSPACE_MANAGER" value="PWM" />
       <env name="P4CONFIG" value=".p4config" />
       <env name="P4PORT" value="12000" />
-      <env name="PATH" value="/bin:/usr/local/bin:/usr/bin:/bin:/mdx/tools/p4/current/bin" />
+      <env name="PATH" value="/mdx/tools/neo4j/neo4j-current/bin:$PROJECT_DIR$/src/methodics/piregr/bin:$PROJECT_DIR$/src/methodics/test/bin:$PROJECT_DIR$/src/methodics/picli/bin:/mdx/tools/subversion/current/bin:/mdx/tools/p4/current/bin:/mdx/tools/prometheus/statsd-exporter-current:/mdx/tools/prometheus/prometheus-current:/mdx/tools/mongodb/mongodb-current/bin:/mdx/tools/redis/redis-current/bin:$PROJECT_DIR$/products/piserver/bin:$PROJECT_DIR$/tools/bin:$PROJECT_DIR$/devtools/env/local/bin:/mdx/tools/methodics/buildic/current/tools/bin:/usr/lib/jvm/temurin-8-jdk-amd64/bin:$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/bin:$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/sbin:$USER_HOME$/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$USER_HOME$/.local/bin:/usr/local/go/bin" />
     </envs>
     <option name="SDK_HOME" value="" />
     <option name="SDK_NAME" value="Python 2.7 (tau)" />
@@ -24,12 +23,14 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/methodics/picli/pi.py" />
-    <option name="PARAMETERS" value="login admin --pw admin" />
+    <option name="PARAMETERS" value="ip load drinks.cosmo@1 ws1" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />
     <option name="REDIRECT_INPUT" value="false" />
     <option name="INPUT_FILE" value="" />
-    <method v="2" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="ip copy vodka" run_configuration_type="PythonConfigurationType" />
+    </method>
   </configuration>
 </component>

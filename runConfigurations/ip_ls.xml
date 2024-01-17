@@ -5,6 +5,7 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
+      <env name="PYTHONUNBUFFERED" value="1" />
       <env name="MDX_CONFIG_DIR" value="$PROJECT_DIR$/src/methodics/test/config" />
       <env name="MDX_PI_DEBUG" value="1" />
       <env name="MDX_PI_SERVER" value="http://localhost:8080" />
@@ -12,11 +13,11 @@
       <env name="MDX_ROOT_DIR" value="$PROJECT_DIR$" />
       <env name="MDX_WORKSPACE_MANAGER" value="PWM" />
       <env name="P4CONFIG" value=".p4config" />
-      <env name="P4PORT" value="12000 " />
-      <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="P4PORT" value="12000" />
+      <env name="PATH" value="/bin:/usr/local/bin:/usr/bin:/bin:/mdx/tools/p4/current/bin" />
     </envs>
     <option name="SDK_HOME" value="" />
-    <option name="SDK_NAME" value="Python 2.7" />
+    <option name="SDK_NAME" value="Python 2.7 (tau)" />
     <option name="WORKING_DIRECTORY" value="$USER_HOME$/workspaces" />
     <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
