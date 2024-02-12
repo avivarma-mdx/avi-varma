@@ -14,9 +14,13 @@ alias l='ls -CF'
 # below them.  Otherwise, just add these lines near the end of the file.
 
 alias pi_ws_rm_all="pi ws ls -a --format=json | jq '.[] | .path' | xargs -n1 pi ws rm"
-alias tau='source ~/develop/avi-varma/avi_scripts/tau.sh'
+alias tau='source ~/avi-varma/avi_scripts/tau.sh'
 alias pi_chdir='~/develop/tau_extras/customer/bin/pi_user_utils/pi_chdir.py'
 alias picd='source ~/develop/tau_extras/customer/bin/pi_user_utils/pi_chdir.sh'
-alias iplm='source ~/develop/avi-varma/avi_scripts/iplm.sh'
+alias iplm='source ~/avi-varma/avi_scripts/iplm.sh'
 alias g='git'
 alias mdx_root='cd /home/avi.varma/develop/tau/src/'
+alias cd_test='cd /home/avi.varma/develop/tau/src/methodics/test/'
+
+alias ps_cache='sudo ~/avi-varma/avi_scripts/kill_ps.sh'
+alias kill_cache='sudo ~/avi-varma/avi_scripts/kill_pic_proc.sh'
