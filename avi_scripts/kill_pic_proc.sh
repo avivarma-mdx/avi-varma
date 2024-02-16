@@ -52,6 +52,8 @@ for process in "${running_processes[@]}"; do
   echo "Killed process: $process"
 done
 
-rm -fr liscense_* PiTest_avi_* tmp* mdx-editor-* .tutorial.* .drinks.* .food.*
+echo "Cleaning /tmp dir..."
 
+cd /tmp
+rm -rf liscense_* PiTest_avi_* tmp* mdx-editor-* .tutorial.* .drinks.* .food.* PiCache*
 echo "Done!"
