@@ -15,7 +15,7 @@ pkill -f p4d
 
 # Start the p4d process on port 1666 with -d flag
 new_command="${restart_command//\"/ } -p 1666 -d"
-nohup $new_command &
+nohup $new_command &>/dev/null
 
 echo "Restarted p4d process on port 1666 with -d flag."
 
