@@ -55,5 +55,5 @@ done
 echo "Cleaning /tmp dir..."
 
 cd /tmp
-rm -rf liscense_* PiTest_avi_* tmp* mdx-editor-* .tutorial.* .drinks.* .food.* PiCache*
+rm -rf *liscense_* *PiTest_avi* tmp* mdx-editor-* .tutorial.* .drinks.* .food.* PiCache* *picache-test-
 echo "Done!"
