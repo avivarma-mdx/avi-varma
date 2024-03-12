@@ -32,3 +32,18 @@ if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
 else
   echo "Canceled PiCache process termination."
 fi
+
+# Find the process ID (PID) of redis-server
+pid=$(pgrep redis-server)
+
+# Check if redis-server is running
+if [[ -z "$pid" ]]; then
+  echo "Redis server not found. Exiting..."
+  exit 1
+fi
+
+# Terminate redis-server with SIGKILL
+echo "Terminating redis-server (PID: $pid)..."
+kill -9 "$pid"
+
+echo "Redis server terminated."

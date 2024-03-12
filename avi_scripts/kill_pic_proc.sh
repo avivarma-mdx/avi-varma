@@ -52,8 +52,24 @@ for process in "${running_processes[@]}"; do
   echo "Killed process: $process"
 done
 
+# Find the process ID (PID) of redis-server
+pid=$(pgrep redis-server)
+
+# Check if redis-server is running
+if [[ -z "$pid" ]]; then
+  echo "Redis server not found. Exiting..."
+  exit 1
+fi
+
+# Terminate redis-server with SIGKILL
+echo "Terminating redis-server (PID: $pid)..."
+kill -9 "$pid"
+
+echo "Redis server terminated."
+
 echo "Cleaning /tmp dir..."
 
 cd /tmp
-rm -rf *liscense_* *PiTest_avi* tmp* mdx-editor-* .tutorial.* .drinks.* .food.* PiCache* *picache-test-
+rm -rf *liscense_* *PiTest_avi* tmp* mdx-editor-* .tutorial.* .drinks.* .food.* PiCache* *picache-test-*
 echo "Done!"
+
