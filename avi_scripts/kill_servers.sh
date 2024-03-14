@@ -5,28 +5,21 @@ pid=$(pgrep redis-server)
 
 # Check if redis-server is running
 if [[ -z "$pid" ]]; then
-  echo "Redis server not found. Exiting..."
-  exit 1
+  echo "Redis server not found. Continuing..."
+else
+  echo "Terminating redis-server (PID: $pid)..."
+  kill -9 "$pid"
+  echo "Redis server terminated."
 fi
-
-# Terminate redis-server with SIGKILL
-echo "Terminating redis-server (PID: $pid)..."
-kill -9 "$pid"
-
-echo "Redis server terminated."
-
 
 # Find the process ID (PID) of mongod
 pid=$(pgrep mongod)
 
 # Check if mongod is running
 if [[ -z "$pid" ]]; then
-  echo "Mongod server not found. Exiting..."
-  exit 1
+  echo "Mongod server not found. Continuing..."
+else
+  echo "Terminating mongod (PID: $pid)..."
+  kill -9 "$pid"
+  echo "mongod terminated."
 fi
-
-# Terminate mongod with SIGKILL
-echo "Terminating mongod (PID: $pid)..."
-kill -9 "$pid"
-
-echo "mongod terminated."
