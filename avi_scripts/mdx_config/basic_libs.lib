@@ -1,0 +1,5 @@
+# Get the base Cadence libraries from the Cadence installation
+
+DEFINE analogLib $(compute:THIS_TOOL_INST_ROOT)/tools/dfII/etc/cdslib/artist/analogLib
+DEFINE basic $(compute:THIS_TOOL_INST_ROOT)/tools/dfII/etc/cdslib/basic
+
