@@ -2,27 +2,38 @@
 
 cd /home/avi.varma/develop/tau
 
-# Check if JAVA_HOME is set to temurin-11-jdk-amd64
-if [[ "${JAVA_HOME}" != "/usr/lib/jvm/temurin-11-jdk-amd64" ]]; then
-  # Set JAVA_HOME to temurin-11-jdk-amd64
-  export JAVA_HOME="/usr/lib/jvm/temurin-11-jdk-amd64"
-fi
+# Function to check if JDK 11 is installed and set JAVA_HOME
+set_java_home_to_jdk11() {
+    echo "Checking for JDK 11 installation..."
 
-export PATH=$JAVA_HOME/bin:$PATH
+    # Get the list of Java alternatives
+    java_list=$(update-alternatives --list java)
 
-# Get the name of the current branch
-# CURRENT_BRANCH=$(git branch --show-current)
+    # Check if JDK 11 is in the list
+    jdk11_path=""
+    for java_path in $java_list; do
+        if [[ $java_path == *"java-11"* ]]; then
+            jdk11_path=$java_path
+            break
+        fi
+    done
 
-# Get the name of the branch we want to be on
-# TARGET_BRANCH="TAU-6202-IPLM"
-
-# If the current branch is not the target branch, perform a git checkout
-# if [[ "${CURRENT_BRANCH}" != "${TARGET_BRANCH}" ]]; then
-#   echo "Switching to branch ${TARGET_BRANCH}..."
-#   git checkout ${TARGET_BRANCH}
-# fi
+    # If JDK 11 is found, set JAVA_HOME
+    if [ -n "$jdk11_path" ]; then
+        export JAVA_HOME=$(dirname $(dirname $jdk11_path))
+        echo "JDK 11 found at: $jdk11_path"
+        echo "JAVA_HOME set to: $JAVA_HOME"
+        export PATH=$JAVA_HOME/bin:$PATH
+        echo "JAVA_HOME appended to PATH..."
+    else
+        echo "ERROR: JDK 11 not found."
+        exit 1
+    fi
+}
 
 # Build IPLM and start the interactive shell
+set_java_home_to_jdk11
 . /home/avi.varma/develop/tau/all.bash
 cd iplm && ./gradlew :piserver-application:installDist
+echo "Changing directory to ~/develop/tau/"
 cd ~/develop/tau/
