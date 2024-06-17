@@ -29,8 +29,40 @@ set_java_home_to_jdk8() {
     fi
 }
 
+# Function to show help message
+show_help() {
+    echo "Usage: $0 [--recompile] [--help]"
+    echo ""
+    echo "Options:"
+    echo "  --recompile   Run the recomp command after setting up the environment."
+    echo "  --help        Show this help message."
+    exit 0
+}
+
+# Parse command line arguments
+recompile_flag=false
+for arg in "$@"; do
+    case $arg in
+        --recompile)
+        recompile_flag=true
+        shift
+        ;;
+        --help)
+        show_help
+        ;;
+        *)
+        echo "Unknown option: $arg"
+        show_help
+        ;;
+    esac
+done
+
 # Build IPLM and start the interactive shell
 set_java_home_to_jdk8
 cd ~/develop/tau/
 . all.bash
-js
+
+# Run js if the recompile flag is set
+if [ "$recompile_flag" = true ]; then
+    js
+fi
