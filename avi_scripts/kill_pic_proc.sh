@@ -38,14 +38,6 @@ fi
 echo "WARNING: This script will terminate the following processes:"
 echo "${running_processes[@]}"
 
-# echo "Are you sure you want to proceed? (y/n)"
-# read answer
-
-# if [[ "$answer" != "y" && "$answer" != "Y" ]]; then
-#   echo "Canceled process termination."
-#   exit 0
-# fi
-
 # Terminate processes
 for process in "${running_processes[@]}"; do
   pkill -f "$process"
@@ -56,16 +48,13 @@ done
 pid=$(pgrep redis-server)
 
 # Check if redis-server is running
-if [[ -z "$pid" ]]; then
-  echo "Redis server not found. Exiting..."
-  exit 1
+if [[ -n "$pid" ]]; then
+  # Terminate redis-server with SIGKILL
+  echo "Terminating redis-server (PID: $pid)..."
+  kill -9 "$pid"
+else
+  echo "Redis server not found."
 fi
-
-# Terminate redis-server with SIGKILL
-echo "Terminating redis-server (PID: $pid)..."
-kill -9 "$pid"
-
-echo "Redis server terminated."
 
 echo "Cleaning /tmp dir..."
 
