@@ -58,6 +58,7 @@ for arg in "$@"; do
 done
 
 # Build IPLM and start the interactive shell
+echo "WARNING: BUILDING LEGACY - DEPRICATED..."
 set_java_home_to_jdk8
 cd ~/develop/tau/
 . all.bash
