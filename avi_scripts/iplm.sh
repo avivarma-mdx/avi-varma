@@ -12,7 +12,7 @@ set_java_home_to_jdk11() {
     # Check if JDK 11 is in the list
     jdk11_path=""
     for java_path in $java_list; do
-        if [[ $java_path == *"java-11"* ]]; then
+        if [[ $java_path == *"temurin-11"* ]]; then
             jdk11_path=$java_path
             break
         fi
