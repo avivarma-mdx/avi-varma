@@ -33,6 +33,7 @@ set_java_home_to_jdk11() {
 
 build_server() {
     cd /home/avi.varma/develop/tau/iplm
+    ./gradlew clean
     ./gradlew :piserver-application:installDist
 }
 
