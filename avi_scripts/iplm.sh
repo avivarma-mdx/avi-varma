@@ -31,9 +31,19 @@ set_java_home_to_jdk11() {
     fi
 }
 
+build_server() {
+    cd /home/avi.varma/develop/tau/iplm
+    ./gradlew :piserver-application:installDist
+}
+
 # Build IPLM and start the interactive shell
 set_java_home_to_jdk11
 . /home/avi.varma/develop/tau/all.bash
-cd iplm && ./gradlew :piserver-application:installDist
+
+# Check if the "--build" flag is provided
+if [[ "$1" == "--build" ]]; then
+    build_server
+fi
+
 echo "Changing directory to ~/develop/tau/"
 cd ~/develop/tau/
