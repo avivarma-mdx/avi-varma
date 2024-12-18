@@ -1,31 +1,22 @@
 #!/bin/bash
 
-# Directory containing the Python scripts
-SCRIPT_DIR=$1
+# Directory containing Python scripts
+SCRIPTS_DIR=$1
 
-# Check if the directory is provided
-if [ -z "$SCRIPT_DIR" ]; then
-  echo "Usage: $0 <directory>"
-  exit 1
-fi
+# Directory to store log files
+LOGS_DIR="logs"
 
-# Check if the directory exists
-if [ ! -d "$SCRIPT_DIR" ]; then
-  echo "Directory $SCRIPT_DIR does not exist."
-  exit 1
-fi
+# Create logs directory if it doesn't exist
+mkdir -p $LOGS_DIR
 
-# Create a location to save all the logs.
-mkdir $SCRIPT_DIR/logs
-
-# Iterate over all Python scripts in the directory
-for script in "$SCRIPT_DIR"/*.py; 
-do
-  # Get the base name of the script (without extension)
-  base_name=$(basename "$script" .py)
+# Iterate over all Python scripts in the given directory
+for script in $SCRIPTS_DIR/*.py; do
+  # Get the base name of the script (without directory and extension)
+  script_name=$(basename "$script" .py)
   
-  # Execute the script and save the output to a log file
-  python "$script" > "$SCRIPT_DIR/logs/$base_name.log" 2>&1
+  # Run the script and log the output
+  python3 "$script" > "$LOGS_DIR/$script_name.log" 2>&1
 done
 
-echo "Execution completed. Logs are saved in $SCRIPT_DIR/logs."
+echo "All scripts have been executed and logs are stored in the '$LOGS_DIR' directory."
+
