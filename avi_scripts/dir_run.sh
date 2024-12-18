@@ -15,7 +15,8 @@ for script in $SCRIPTS_DIR/*.py; do
   script_name=$(basename "$script" .py)
   
   # Run the script and log the output
-  python3 "$script" > "$LOGS_DIR/$script_name.log" 2>&1
+  "$script" > "$LOGS_DIR/$script_name.log" 2>&1
+  echo $LOGS_DIR/$script_name.log
 done
 
 echo "All scripts have been executed and logs are stored in the '$LOGS_DIR' directory."
