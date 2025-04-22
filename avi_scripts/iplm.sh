@@ -38,11 +38,6 @@ build_server() {
     ./gradlew :piserver-application:installDist
 }
 
-clean_venv() {
-    cd /home/avi.varma/develop/tau
-    rm -rf venv
-}
-
 # Build IPLM and start the interactive shell
 set_java_home_to_jdk11
 . /home/avi.varma/develop/tau/all.bash
