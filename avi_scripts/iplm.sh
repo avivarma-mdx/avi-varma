@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /home/avi.varma/develop/tau
+ALL_BASH_PATH="/home/avi.varma/develop/tau/all.bash"
 
 # Function to check if JDK 11 is installed and set JAVA_HOME
 set_java_home_to_jdk11() {
@@ -38,14 +38,15 @@ build_server() {
     ./gradlew :piserver-application:installDist
 }
 
+cd /home/avi.varma/develop/tau
+
 # Build IPLM and start the interactive shell
 set_java_home_to_jdk11
-. /home/avi.varma/develop/tau/all.bash
-
 # Check if the "--build" flag is provided
 if [[ "$1" == "--build" ]]; then
     build_server
 fi
+. "$ALL_BASH_PATH"
 
-echo "Changing directory to ~/develop/tau/"
+echo "Changing directory to ~/develop/tau/"    
 cd ~/develop/tau/
