@@ -20,6 +20,7 @@ alias picd='source ~/develop/tau_extras/customer/bin/pi_user_utils/pi_chdir.sh'
 alias iplm='source ~/Documents/avi-varma/avi_scripts/iplm.sh'
 alias g='git'
 alias mdx='cd /home/avi.varma/develop/tau/'
+alias picd='cd /home/avi.varma/develop/picache/'
 alias cd_test='cd /home/avi.varma/develop/tau/src/methodics/test/'
 
 alias ps_cache='sudo ~/Documents/avi-varma/avi_scripts/kill_ps.sh'
