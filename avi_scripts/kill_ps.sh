@@ -27,7 +27,7 @@ read answer
 
 if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
   # Kill all PiCache processes
-  pkill -f "PiCache"
+  sudo pkill -f "PiCache"
   echo "Killed all 'PiCache' processes."
 else
   echo "Canceled PiCache process termination."
