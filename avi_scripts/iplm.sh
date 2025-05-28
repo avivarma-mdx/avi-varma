@@ -42,7 +42,7 @@ build_server() {
 cd /home/avi.varma/develop/tau
 
 # Build IPLM and start the interactive shell
-set_java_home_to_jdk11
+# set_java_home_to_jdk11
 # Check if the "--build" flag is provided
 if [[ "$1" == "--build" ]]; then
     build_server

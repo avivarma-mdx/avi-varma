@@ -28,7 +28,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -79,18 +79,22 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -112,22 +116,40 @@ if ! shopt -oq posix; then
   fi
 fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+set_java_home_to_jdk11() {
+    # Get the list of Java alternatives
+    java_list=$(update-alternatives --list java)
+    # Check if JDK 11 is in the list
+    jdk11_path=""
+    for java_path in $java_list; do
+        if [[ $java_path == *"temurin-11"* ]]; then
+            jdk11_path=$java_path
+            break
+        fi
+    done
+    # If JDK 11 is found, set JAVA_HOME
+    if [ -n "$jdk11_path" ]; then
+        export JAVA_HOME=$(dirname $(dirname $jdk11_path))
+        export PATH=$JAVA_HOME/bin:$PATH
+    else
+        echo "ERROR: JDK 11 not found."
+        exit 1
+    fi
+}
+
+set_java_home_to_jdk11
+
+# Export environment variables
+export TZ=America/Los_Angeles
+
 # Cadence-specific
 export CDS_LIC_FILE=5280@flex.dev.methodics-da.com
 export OA_UNSUPPORTED_PLAT=linux_rhel60
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
 export PATH=$PATH:/home/avi.varma/.local/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
-
-export EDITOR="nano"
-export VISUAL="nano"
-export TZ=America/Los_Angeles
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export MDX_PIC_VENV=/home/avi.varma/develop/tau/venv/pic/dev
