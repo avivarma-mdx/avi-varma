@@ -8,12 +8,12 @@ else
   exit 1
 fi
 
-# Filter processes and exclude grep/ksoftirqd
-processes=$(ps aux | egrep -i "java|redis|mongo|picache|rq|p4d|svnserve|buildic" | egrep -v "grep|ksoftirqd")
+# Filter processes and include only picache or PiCache
+processes=$(ps aux | egrep -i "picache" | egrep -v "grep")
 
 # Check if any processes found
 if [[ -z "$processes" ]]; then
-  echo "No processes found matching 'java|redis|mongo|picache|rq|p4d|svnserve|buildic'."
+  echo "No processes found matching 'picache' or 'PiCache'."
   exit 0
 fi
 
@@ -25,7 +25,7 @@ echo "$processes"
 pids=$(echo "$processes" | awk '{print $2}')
 
 # Ask for confirmation before killing all listed processes
-echo "Before proceeding, please confirm you want to kill ALL listed processes (y/n):"
+echo "Before proceeding, please confirm you want to kill ALL listed picache processes (y/n):"
 read answer
 
 if [[ "$answer" == "y" || "$answer" == "Y" ]]; then
